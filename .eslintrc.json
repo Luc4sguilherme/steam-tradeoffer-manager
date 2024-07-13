@@ -1,0 +1,22 @@
+{
+  "env": {
+    "commonjs": true,
+    "es2021": true,
+    "node": true
+  },
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "plugins": ["prettier", "editorconfig"],
+  "extends": [
+    "standard",
+    "plugin:editorconfig/noconflict",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-undef": "warn",
+    "eqeqeq": "off"
+  }
+}
