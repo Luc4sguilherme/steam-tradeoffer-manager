@@ -768,6 +768,7 @@ class TradeOfferManager extends EventEmitter {
     return items.map(item => {
       item.appid = appid || item.appid;
       item.contextid = contextid || item.contextid;
+      item.assetid = item.id = (item.id || item.assetid).toString();
 
       const key = `${item.appid}_${item.classid}_${item.instanceid || '0'}`;
       const entry = cache.get(key);
