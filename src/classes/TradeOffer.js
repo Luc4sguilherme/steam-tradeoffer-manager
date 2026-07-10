@@ -137,10 +137,6 @@ class TradeOffer {
         return;
       }
 
-      if (this.data(key) === value) {
-        return;
-      }
-
       pollData.offerData = pollData.offerData || {};
       pollData.offerData[this.id] = pollData.offerData[this.id] || {};
       pollData.offerData[this.id][key] = value;
