@@ -246,7 +246,10 @@ class TradeOfferManager extends EventEmitter {
       }
 
       clearTimeout(this._pollTimer);
-      this.doPoll();
+
+      if (this.pollInterval >= 0) {
+        this.doPoll();
+      }
 
       callback && callback();
     };
