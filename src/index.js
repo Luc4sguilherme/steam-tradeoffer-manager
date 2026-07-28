@@ -777,7 +777,10 @@ class TradeOfferManager extends EventEmitter {
       }
 
       for (const i in entry) {
-        if (Object.prototype.hasOwnProperty.call(entry, i)) {
+        if (
+          Object.prototype.hasOwnProperty.call(entry, i) &&
+          !Object.prototype.hasOwnProperty.call(item, i)
+        ) {
           item[i] = entry[i];
         }
       }
