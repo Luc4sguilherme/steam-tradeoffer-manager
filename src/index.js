@@ -483,22 +483,21 @@ class TradeOfferManager extends EventEmitter {
           return;
         }
 
-        if (Helpers.offerMalformed(body.response.offer)) {
+        const rawOffer = Helpers.sanitizeRawOffer(body.response.offer);
+
+        if (Helpers.offerMalformed(rawOffer)) {
           callback(new Error('Data temporarily unavailable'));
           return;
         }
 
         this._digestDescriptions(body.response.descriptions);
-        Helpers.checkNeededDescriptions(this, [body.response.offer], err => {
+        Helpers.checkNeededDescriptions(this, [rawOffer], err => {
           if (err) {
             callback(err);
             return;
           }
 
-          callback(
-            null,
-            Helpers.createOfferFromData(this, body.response.offer),
-          );
+          callback(null, Helpers.createOfferFromData(this, rawOffer));
         });
       },
     );
@@ -619,10 +618,13 @@ class TradeOfferManager extends EventEmitter {
           return;
         }
 
-        sentOffers = sentOffers.concat(body.response.trade_offers_sent || []);
-        receivedOffers = receivedOffers.concat(
-          body.response.trade_offers_received || [],
-        );
+        sentOffers = sentOffers
+          .concat(body.response.trade_offers_sent || [])
+          .map(offer => Helpers.sanitizeRawOffer(offer));
+
+        receivedOffers = receivedOffers
+          .concat(body.response.trade_offers_received || [])
+          .map(offer => Helpers.sanitizeRawOffer(offer));
 
         options.cursor = body.response.next_cursor || 0;
         if (typeof options.cursor == 'number' && options.cursor != 0) {
