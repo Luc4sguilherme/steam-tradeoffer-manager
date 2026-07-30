@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/luc4sguilherme/steam-tradeoffer-manager/compare/v1.1.0...v1.2.0) (2026-07-30)
+
+
+### Bug Fixes
+
+* enable polling in setCookies only if pollInterval is defined ([6ad3459](https://github.com/luc4sguilherme/steam-tradeoffer-manager/commit/6ad3459d405931e325997095eebfb135602cce3b))
+* prevent the asset description from overwriting the asset properties ([9734ee4](https://github.com/luc4sguilherme/steam-tradeoffer-manager/commit/9734ee444c97e7b8495281b7c60ecdd3b48ef88e))
+
+
+### Features
+
+* improve the sanitization of raw offers ([b2d7fb0](https://github.com/luc4sguilherme/steam-tradeoffer-manager/commit/b2d7fb08b18a426cb9adf05c742c9016750730d5))
+
 # [1.1.0](https://github.com/luc4sguilherme/steam-tradeoffer-manager/compare/v1.0.1...v1.1.0) (2026-07-10)
 
 
